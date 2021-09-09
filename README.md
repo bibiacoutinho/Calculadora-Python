@@ -10,6 +10,7 @@ No diretório raiz:
 virtualenv -p /usr/bin/python3 ENV
 source ENV/bin/activate
 pip3 install -r requirements.txt
+cd src
 python run.py
 ```
 # Para desativar virtualenv
