@@ -14,7 +14,7 @@ cd src
 python3 run.py
 ```
 # Para desativar virtualenv
-
+No diretório raiz:
 ```
 deactivate
 ```
