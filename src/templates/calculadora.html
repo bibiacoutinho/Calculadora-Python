@@ -1,0 +1,97 @@
+<html>
+
+<head>
+	<title>Calculadora</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
+	<style>
+		body {
+			color: #7F0799;
+			font-family: 'Urbanist', sans-serif;
+		}
+
+		nav {
+			width: 100%;
+			height: 50px;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			background-color: #C3F73A;
+		}
+
+		a {
+			display: block;
+			padding: 8px;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: #F26BC3;
+		}
+
+		.calculadora {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		form {
+			background-color: #FDECF7;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+		}
+
+		.enviar {
+			color: #7F0799;
+			background-color: #C3F73A;
+			font-family: 'Urbanist', sans-serif;
+			border-radius: 10px;
+			padding: 10px;
+			border: aqua 1px;
+		}
+
+		.enviar:hover {
+			background-color: #7F0799;
+			color: #C3F73A;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="/">Calculadora</a>
+		<a href="/log">Logs</a>
+		</ul>
+	</nav>
+
+	<div class="calculadora">
+		<form>
+
+			<label for="n1">Número 1:</label>
+			<input type="number" id="n1" name="n1"><br><br>
+
+			<label for="n2">Número 2:</label>
+			<input type="number" id="n2" name="n2">
+
+
+
+			<p>Operação:</p>
+
+			<input type="radio" id="soma" name="operacao" value="soma">
+			<label for="soma">+</label>
+
+			<input type="radio" id="subt" name="operacao" value="subt">
+			<label for="subt">-</label>
+
+			<input type="radio" id="seno" name="operacao" value="seno">
+			<label for="seno">Seno</label><br><br>
+
+			<input class="enviar" type="submit" id="r" name="r" value="Enviar">
+
+		</form>
+	</div>
+</body>
+
+</html>
