@@ -18,3 +18,7 @@ No diretório raiz:
 ```
 deactivate
 ```
+# Tecnologias utilizadas
+Python 3.6.9
+Pip 9.0.1
+Virtualenv 20.7.2
