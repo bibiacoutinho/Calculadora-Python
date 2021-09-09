@@ -7,7 +7,7 @@ Projeto de calculadora com logs.
 
 # Como instalar
 ```
-git clone git@github.com:bibiacoutinho/Calculadora-interfaces.git
+git clone git@github.com:bibiacoutinho/Calculadora-Python.git
 ```
 No diretório raiz:
 ```
