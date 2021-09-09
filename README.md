@@ -19,7 +19,7 @@ pip3 install -r requirements.txt
 No diretório raiz:
 ```
 cd src
-python3 run.py
+python3 app.py
 ```
 Para desativar virtualenv:
 ```
