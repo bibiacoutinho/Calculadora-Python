@@ -1,7 +1,11 @@
 # Calculadora
-Respositório possui as interfaces do projeto em Python e Flask.
+Projeto de calculadora com logs.
 
-# Como instalar e executar
+# Entregas
+- [x] Interfaces - 10/09/21
+- [ ] :hourglass:
+
+# Como instalar
 ```
 git clone git@github.com:bibiacoutinho/Calculadora-interfaces.git
 ```
@@ -10,15 +14,18 @@ No diretório raiz:
 virtualenv -p /usr/bin/python3 ENV
 source ENV/bin/activate
 pip3 install -r requirements.txt
+```
+# Como executar
+No diretório raiz:
+```
 cd src
 python3 run.py
 ```
-# Para desativar virtualenv
-No diretório raiz:
+Para desativar virtualenv:
 ```
 deactivate
 ```
 # Tecnologias utilizadas
-Python 3.6.9
-Pip 9.0.1
-Virtualenv 20.7.2
+* Python 3.6.9
+* Pip 9.0.1
+* Virtualenv 20.7.2
