@@ -30,17 +30,38 @@
 			color: #F26BC3;
 		}
 
-		form {
-			background-color: aqua;
-			padding: 20px;
+		#search-bar {
+			display: flex;
+			justify-content: space-around;
+			margin: 20px 0;
+			font-family: 'Urbanist', sans-serif;
+		}
+
+		#search-bar>input {
+			background-color: #FDECF7;
+			font-family: 'Urbanist', sans-serif;
+			border: 2px #7F0799 solid;
 			border-radius: 10px;
-			box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+			padding: 5px 10px;
+			width: 30%;
+			outline: none;
+		}
+
+		#search-bar>input:focus {
+			border: 2px #F26BC3 solid;
+			border-radius: 10px;
 		}
 
 		table {
 			font-family: arial, sans-serif;
 			border-collapse: collapse;
 			width: 100%;
+			font-family: 'Urbanist', sans-serif;
+		}
+
+		thead {
+			background-color: #7F0799;
+			color: #C3F73A;
 		}
 
 		td,
@@ -63,14 +84,20 @@
 		</ul>
 	</nav>
 
+	<div id="search-bar">
+		<input type="text" id="filtro" onkeyup="pesquisar()" placeholder="Pesquisar">
+	</div>
+
 	<div>
-		<table>
-			<tr>
-				<th>Data</th>
-				<th>Tipo</th>
-				<th>Operação</th>
-				<th>Parâmetros</th>
-			</tr>
+		<table id="logs">
+			<thead>
+				<tr>
+					<th>Data</th>
+					<th>Tipo</th>
+					<th>Operação</th>
+					<th>Parâmetros</th>
+				</tr>
+			</thead>
 			<tr>
 				<td>13/09/2021 13:00:00</td>
 				<td>Elementar</td>
@@ -83,9 +110,44 @@
 				<td>Seno</td>
 				<td>120</td>
 			</tr>
+			<tr>
+				<td>18/09/2021 12:00:00</td>
+				<td>Elementar</td>
+				<td>Subtração</td>
+				<td>30,80</td>
+			</tr>
 		</table>
 
 	</div>
+	<script>
+		function pesquisar() {
+			let input, filter, table;
+			input = document.getElementById("filtro");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("logs");
+			let rows = table.getElementsByTagName("tr");
+			for (i = 1; i < rows.length; i++) {
+				let td = rows[i].getElementsByTagName("td");
+				let j;
+				let rowFiltered = false;
+				for (j = 0; j < td.length; j++) {
+					if (td[j]) {
+						if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+							rowFiltered = true;
+							continue;
+						}
+					}
+				}
+
+				if (!rowFiltered) {
+					rows[i].style.display = "none";
+				} else {
+					rows[i].style.display = "";
+				}
+			}
+
+		}
+	</script>
 </body>
 
 </html>
