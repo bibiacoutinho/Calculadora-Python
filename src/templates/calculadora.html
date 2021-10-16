@@ -5,6 +5,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		body {
 			color: #7F0799;
@@ -71,7 +72,7 @@
 	</nav>
 
 	<div class="calculadora">
-		<form>
+		<form id="form">
 
 			<label for="n1">Número 1:</label><br>
 			<input type="number" id="n1" name="n1"><br><br>
@@ -83,20 +84,45 @@
 
 			<p>Operação:</p>
 
-			<input type="radio" id="soma" name="operacao" value="soma">
+			<input type="radio" name="opr" value="soma">
 			<label for="soma">Soma</label>
 
-			<input type="radio" id="subt" name="operacao" value="subt">
+			<input type="radio" name="opr" value="subt">
 			<label for="subt">Subtração</label>
 
-			<input type="radio" id="seno" name="operacao" value="seno">
+			<input type="radio" name="opr" value="seno">
 			<label for="seno">Seno</label><br><br>
 
 			<label for="resultado">Resultado:</label><br>
-			<input type="text" id="resultado" name="resultado" disabled><br><br>
-			<input class="enviar" type="submit" id="r" name="r" value="Enviar">
+			<textarea id="resultado" name="resultado" rows="3" cols="10"></textarea><br><br>
+			<input class="enviar" type="submit" value="Enviar">
 		</form>
 	</div>
+	<script>
+		$(document).ready(function () {
+
+			$('form').on('submit', function (event) {
+
+				$.ajax({
+					data: {
+						n1: $('#n1').val(),
+						n2: $('#n2').val(),
+						opr: $('input[name=opr]:checked', '#form').val()
+					},
+					type: 'POST',
+					url: 'http://localhost:5001/gateway',
+					crossDomain: true,
+					success: function (resposta) {
+						console.log(resposta)
+						$("#resultado").val(resposta.resultado);
+
+					}
+				})
+				event.preventDefault();
+			});
+
+		});
+	</script>
 </body>
 
 </html>
