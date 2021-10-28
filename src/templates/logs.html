@@ -5,6 +5,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		body {
 			color: #7F0799;
@@ -89,7 +90,7 @@
 	</div>
 
 	<div>
-		<table id="logs">
+		<table>
 			<thead>
 				<tr>
 					<th>Data</th>
@@ -98,54 +99,44 @@
 					<th>Parâmetros</th>
 				</tr>
 			</thead>
-			<tr>
-				<td>13/09/2021 13:00:00</td>
-				<td>Elementar</td>
-				<td>Soma</td>
-				<td>120, 2</td>
-			</tr>
-			<tr>
-				<td>12/09/2021 12:00:00</td>
-				<td>Transcendente</td>
-				<td>Seno</td>
-				<td>120</td>
-			</tr>
-			<tr>
-				<td>18/09/2021 12:00:00</td>
-				<td>Elementar</td>
-				<td>Subtração</td>
-				<td>30,80</td>
-			</tr>
+			<tbody id="logs">
+			</tbody>
 		</table>
 
 	</div>
 	<script>
+		window.addEventListener("load", function (event) {
+			$.ajax({
+				type: 'GET',
+				url: 'http://localhost:5001/gateway',
+				crossDomain: true,
+				success: function (resposta) {
+					console.log("json:" + JSON.parse(resposta))
+					resposta = JSON.parse(resposta)
+					var logs = ''
+					$.each(resposta, function (key, value) {
+						logs += '<tr>'
+						logs += '<td>' + value.data + '</td>'
+						logs += '<td>' + value.tipo + '</td>'
+						logs += '<td>' + value.operacao + '</td>'
+						logs += '<td>' + value.n1 + ',' + value.n2 + '</td>'
+					})
+					$('#logs').append(logs)
+
+				}
+			})
+		});
+	</script>
+	<script>
 		function pesquisar() {
-			let input, filter, table;
-			input = document.getElementById("filtro");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("logs");
-			let rows = table.getElementsByTagName("tr");
-			for (i = 1; i < rows.length; i++) {
-				let td = rows[i].getElementsByTagName("td");
-				let j;
-				let rowFiltered = false;
-				for (j = 0; j < td.length; j++) {
-					if (td[j]) {
-						if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-							rowFiltered = true;
-							continue;
-						}
-					}
-				}
-
-				if (!rowFiltered) {
-					rows[i].style.display = "none";
-				} else {
-					rows[i].style.display = "";
-				}
-			}
-
+			$(document).ready(function () {
+				$("#filtro").on("keyup", function () {
+					const value = $(this).val().toLowerCase();
+					$("#logs tr").filter(function () {
+						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+					})
+				})
+			})
 		}
 	</script>
 </body>
