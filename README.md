@@ -4,6 +4,7 @@ Projeto de calculadora com logs.
 # Entregas
 - [x] Interfaces - 10/09/21
 - [x] Microsserviços de operações e logs - 29/10/21
+- [x] Integração Contínua - 03/11/21 
 
 # Como instalar
 ```
@@ -17,7 +18,7 @@ pip3 install -r requirements.txt
 ```
 Obs: este processo precisa ser feito para cada repositorio do microsserviço correspondente, são eles:
 - [Gateway](https://github.com/bibiacoutinho/Gateway)
-- [Operação Elementar](https://github.com/bibiacoutinho/Operacoes-Elementares)
+- [Operação Elementar](https://github.com/bibiacoutinho/Operacoes-Elementares) neste repositório foi implementado o GitActions (Integração Contínua)
 - [Operação Transcendente](https://github.com/bibiacoutinho/Operacao-Transcendente)
 - [Logs:](https://github.com/bibiacoutinho/Logs) é preciso configurar a URI do banco de dados utilizado, neste projeto foi utilizado o MariaDB.
 
