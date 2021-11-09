@@ -4,7 +4,7 @@ Projeto de calculadora com logs.
 # Entregas
 - [x] Interfaces - 10/09/21
 - [x] Microsserviços de operações e logs - 29/10/21
-- [x] Integração Contínua - 03/11/21 
+- [x] Integração Contínua - 09/11/21 
 
 # Como instalar
 ```
